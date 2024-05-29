@@ -38,14 +38,19 @@ export class Shop {
       }
     }
   }
-  
+  ifConjuredItem(i){
+    if(this.items[i].name.includes('Conjured')){
+      this.decreaseQualityBy1(i)
+    }
+  }
   
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') { //if is not 'Aged Brie' and 'Backstage passes to a TAFKAL80ETC concert'
         if (this.items[i].quality > 0) { //condition to decrease only if quality > 0 (quality min = 0) and if is not 'Aged Brie' and 'Backstage passes to a TAFKAL80ETC concert'
-          this.decreaseQualityBy1ExceptSulfuras(i)
+          this.decreaseQualityBy1ExceptSulfuras(i);
+          this.ifConjuredItem(i);
         }
       } else {
         if (this.items[i].quality < 50) { //condition to increase only if quality < 50 (quality max = 50) and if is 'Aged Brie' and 'Backstage passes to a TAFKAL80ETC concert' and quality < 50
@@ -60,7 +65,7 @@ export class Shop {
 
       if (this.items[i].sellIn < 0) { //Once the sell by date has passed
         switch(this.items[i].name){
-          case 'Aged Brie':
+          case 'Aged Brie': //quanlity of 'Aged Brie increase by 1 again ?
             if (this.items[i].quality < 50) { //condition to increase only if quality < 50 (quality max = 50)
               this.increaseQualityBy1(i);
             }
@@ -74,8 +79,6 @@ export class Shop {
             }
         }
       }
-
-      
 
     }
 
