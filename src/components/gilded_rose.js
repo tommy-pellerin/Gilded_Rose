@@ -39,8 +39,10 @@ export class Shop {
     }
   }
   ifConjuredItem(i){
-    if(this.items[i].name.includes('Conjured')){
-      this.decreaseQualityBy1(i)
+    if (this.items[i].quality > 0) {
+      if(this.items[i].name.toLowerCase().includes('conjured')){
+        this.decreaseQualityBy1(i)
+      }
     }
   }
   
@@ -76,6 +78,7 @@ export class Shop {
           default:
             if (this.items[i].quality > 0) { //condition to decrease only if quality > 0 (quality min = 0)
               this.decreaseQualityBy1ExceptSulfuras(i)
+              this.ifConjuredItem(i);
             }
         }
       }
