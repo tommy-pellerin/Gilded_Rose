@@ -17,7 +17,7 @@ describe("Gilded Rose", function() {
       new Item("Conjured Mana Cake", 3, 6),
     ];
 
-    const days = Number(process.argv[2]) || 7; //process.argv[2] vu avec les algorithmes pour lire le troisième argument que passé à au script. ex: si on lance pnpm run test 10, alors process.argv[2] = 10
+    const days = Number(process.argv[2]) || 2; //process.argv[2] vu avec les algorithmes pour lire le troisième argument que passé à au script. ex: si on lance pnpm run test 10, alors process.argv[2] = 10
     const gildedRose = new Shop(items);
 
     for (let day = 0; day < days; day++) {
